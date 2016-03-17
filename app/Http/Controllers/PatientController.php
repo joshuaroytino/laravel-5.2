@@ -45,8 +45,9 @@ class PatientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Patient $patient
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function show(Patient $patient)
     {
