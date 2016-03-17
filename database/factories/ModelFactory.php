@@ -20,10 +20,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Patient::class, function (Faker\Generator $faker) {
+$factory->define(App\Book::class, function (Faker\Generator $faker) {
     return [
-        'last_name' => $faker->lastName,
-        'first_name' => $faker->firstName,
-        'middle_initial' => strtoupper(str_random(1))
+        'name' => $faker->company,
+        'isbn' => $faker->isbn13
     ];
 });

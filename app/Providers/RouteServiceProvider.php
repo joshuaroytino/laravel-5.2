@@ -28,11 +28,11 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot($router);
 
         // $router->model('patients', 'App\Patient');
-        $router->bind('patients', function($id)
+        $router->bind('books', function($id)
         {
             try
             {
-                return \App\Patient::findOrFail($id);
+                return \App\Book::findOrFail($id);
             } 
             catch(ModelNotFoundException $e)
             {
