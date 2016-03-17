@@ -15,8 +15,7 @@
  * @param \Faker\Generator $faker
  * @return array
  */
-$factory->define(
-    App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
@@ -29,8 +28,7 @@ $factory->define(
  * @param \Faker\Generator $faker
  * @return array
  */
-$factory->define(
-    App\Book::class, function (Faker\Generator $faker) {
+$factory->define(App\Book::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->company,
         'isbn' => $faker->isbn13
