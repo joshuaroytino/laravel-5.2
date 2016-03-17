@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Routing\Router;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -30,14 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         // $router->model('patients', 'App\Patient');
         $router->bind('books', function($id)
         {
-            try
-            {
-                return \App\Book::findOrFail($id);
-            } 
-            catch(ModelNotFoundException $e)
-            {
-                return dd($e);
-            }
+            return \App\Book::findOrFail($id);
         });
     }
 

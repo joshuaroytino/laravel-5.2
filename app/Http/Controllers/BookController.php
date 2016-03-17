@@ -6,6 +6,7 @@ use App\Book;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
 {
@@ -32,23 +33,24 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param BookRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
-        //
+        Book::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Book $book
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function show($id)
+    public function show(Book $book)
     {
-        //
+        return $book;
     }
 
     /**
@@ -65,13 +67,14 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param BookRequest|Request $request
+     * @param Book $book
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function update(Request $request, $id)
+    public function update(BookRequest $request, Book $book)
     {
-        //
+        $book->update($request->all());
     }
 
     /**
@@ -80,8 +83,8 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
     }
 }
