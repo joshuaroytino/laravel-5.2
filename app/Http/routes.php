@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['prefix' => 'api/v1'], function(){
 	Route::resource('books', 'BookController');
+	Route::resource('authors', 'AuthorController');
 });
 
 Route::get('patient/delete/{id}', function($id){

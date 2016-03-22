@@ -17,7 +17,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::all();
+        return Book::with('authors')->get();
     }
 
     /**
@@ -50,7 +50,9 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return $book;
+        $response = $book;
+        $response['authors'] = $book->authors()->get();
+        return $response;
     }
 
     /**

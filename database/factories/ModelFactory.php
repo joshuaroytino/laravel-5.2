@@ -34,3 +34,30 @@ $factory->define(App\Book::class, function (Faker\Generator $faker) {
         'isbn' => $faker->isbn13
     ];
 });
+
+/**
+ * @param \Faker\Generator $faker
+ * @return array
+ */
+$factory->define(App\Author::class, function (Faker\Generator $faker) {
+    return [
+        'last_name' => $faker->lastName,
+        'first_name' => $faker->firstName,
+        'middle_name' => $faker->lastName
+    ];
+});
+
+/**
+ * @param \Faker\Generator $faker
+ * @return array
+ */
+$factory->define(App\AuthorBook::class, function (Faker\Generator $faker) {
+    return [
+        'author_id' => function(){
+            return factory(App\Author::class)->create()->id;
+        },
+        'book_id' => function(){
+            return factory(App\Book::class)->create()->id;
+        }
+    ];
+});

@@ -31,6 +31,11 @@ class RouteServiceProvider extends ServiceProvider
         {
             return \App\Book::findOrFail($id);
         });
+
+        $router->bind('authors', function($id)
+        {
+           return \App\Author::findOrFail($id);
+        });
     }
 
     /**

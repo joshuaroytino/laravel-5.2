@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class Book
@@ -17,4 +18,9 @@ class Book extends Model
         'name',
         'isbn'
     ];
+
+    public function authors()
+    {
+        return $this->belongsToMany(\App\Author::class, 'authors_books', 'book_id', 'author_id');
+    }
 }
