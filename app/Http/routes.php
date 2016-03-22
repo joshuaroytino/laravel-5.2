@@ -31,9 +31,13 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 
-Route::group(['prefix' => 'api/v1'], function(){
+Route::group(['prefix' => 'api/v1', 'middleware' =>['oauth']], function(){
 	Route::resource('books', 'BookController');
 	Route::resource('authors', 'AuthorController');
+});
+
+Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
 });
 
 Route::get('patient/delete/{id}', function($id){
