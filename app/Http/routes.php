@@ -39,10 +39,3 @@ Route::group(['prefix' => 'api/v1', 'middleware' =>['oauth']], function(){
 Route::post('oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
-
-Route::get('patient/delete/{id}', function($id){
-	return "<form method='POST' action='". url("api/v1/patients/{$id}") ."'>" .
-		"<input type='hidden' value='DELETE' name='_method'>" .
-		"<button type='submit'>DELETE</button>" .
-		"</form>";
-});
