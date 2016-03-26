@@ -47,3 +47,9 @@ Route::group(['prefix' => 'api/v2', 'middleware' =>['auth:api', 'throttle:5,1']]
 Route::post('oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+});
