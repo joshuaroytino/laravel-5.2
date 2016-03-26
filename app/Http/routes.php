@@ -39,6 +39,11 @@ Route::group(['prefix' => 'api/v1', 'middleware' =>['oauth', 'api']], function()
     Route::resource('authors', 'AuthorController');
 });
 
+Route::group(['prefix' => 'api/v2', 'middleware' =>['auth:api', 'throttle:5,1']], function(){
+    Route::resource('authors', 'AuthorController');
+    Route::resource('books', 'BookController');
+});
+
 Route::post('oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
